@@ -14,9 +14,9 @@ function showProducts (array){
         
         Nombre: `+ product.name +` 
         <br>
-        Precio: `+ product.currency + product.cost + `
+        Precio: `+ product.currency + product.cost +`
         <br>
-        Descripción: `+ product.description + `
+        Descripción: `+ product.description +`
         <br>
         <br>
         `
