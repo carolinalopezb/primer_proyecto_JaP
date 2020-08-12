@@ -10,8 +10,10 @@ function showProducts (array){
     for (let i = 0; i < array.length; i++){
         let product = array[i];
 
-        htmlContentToAppend += `
-        
+        htmlContentToAppend +=
+
+        `
+              
         Nombre: `+ product.name +` 
         <br>
         Precio: `+ product.currency + product.cost +`
