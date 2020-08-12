@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
         if (camposCompletos) {
             
-                        window.location = 'index.html';
+                        window.location = 'inicio.html';
                 
         }else{
 
