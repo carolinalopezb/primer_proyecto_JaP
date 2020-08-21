@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
         if (camposCompletos) {
             
+            localStorage.setItem('user-logged',JSON.stringify({user: inputUser.value}));
                         window.location = 'inicio.html';
                 
         }else{
