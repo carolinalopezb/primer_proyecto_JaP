@@ -6,6 +6,10 @@ var productsArray = [];
 var minPrecio = undefined;
 var maxPrecio = undefined;
 
+const ORDER_ASC_BY_PRICE ="price->PRICE";
+const ORDER_DESC_BY_PRICE ="PRICE->price";
+const ORDER_DESC_BY_CANTIDAD ="CANTIDAD->cantidad";
+
 
 function showProducts (array){
     
@@ -40,9 +44,34 @@ document.addEventListener ("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS_URL).then (function(resultObj){
         if (resultObj.status === "ok") {
             productsArray = resultObj.data;
+
+            productsArray = sortProducts(ORDER_ASC_BY_PRICE, productsArray);
+
             showProducts(productsArray);
         }
     });
+
+    document.getElementById("sortCantidad").addEventListener("click", function(){
+        productsArray = sortProducts(ORDER_DESC_BY_CANTIDAD, productsArray);
+
+        showProducts(productsArray);
+    });
+
+    document.getElementById("sortAsc").addEventListener("click", function(){
+        productsArray = sortProducts(ORDER_ASC_BY_PRICE, productsArray);
+
+        showProducts(productsArray);
+    });
+
+    document.getElementById("sortDesc").addEventListener("click", function(){
+        productsArray = sortProducts(ORDER_DESC_BY_PRICE, productsArray);
+
+        showProducts(productsArray);
+    });
+
+
+    //-------------------------------------------------------------------------------------
+
     document.getElementById("limpiar").addEventListener("click", function(){
         document.getElementById("min").value = "";
         document.getElementById("max").value = "";
@@ -75,3 +104,31 @@ document.addEventListener ("DOMContentLoaded", function(e){
         showProducts(productsArray);
     });
 });
+
+function sortProducts (criterio, array){
+    let result = [];
+
+    if (criterio === ORDER_ASC_BY_PRICE){
+        result = array.sort(function(a,b){
+            if (a.cost < b.cost) { return -1; }
+            if (a.cost > b.cost) { return 1; }
+            return 0;
+        });
+
+
+} else if (criterio === ORDER_DESC_BY_PRICE) {
+    result = array.sort(function(a,b){
+        if (a.cost > b.cost) { return -1; }
+        if (a.cost < b.cost) { return 1; }
+        return 0; 
+     });
+} else if (criterio === ORDER_DESC_BY_CANTIDAD) {
+    result = array.sort(function(a,b){
+        if (a.soldCount > b.soldCount) { return -1; }
+        if (a.soldCount < b.soldCount) { return 1; }
+        return 0; 
+     });
+}
+
+return result;
+}
