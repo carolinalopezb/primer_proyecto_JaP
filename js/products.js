@@ -26,14 +26,13 @@ function showProducts (array){
 
         `   
 
-      
+        <img src="`+product.imgSrc+`" alt="imagen producto"><br>
         Nombre: `+ product.name +` 
         <br>
         Precio: `+ product.currency +` `+ product.cost +`
         <br>
         Descripción: `+ product.description +`
-        <br>
-        <br>
+        <a style="float: right"href="file:///C:/Users/Admin.DESKTOP-0Q23CA9/Documents/GitHub/primer_proyecto_JaP/product-info.html">Ver producto</a><br><br>
         `
         document.getElementById("prod").innerHTML = htmlContentToAppend;
     }
