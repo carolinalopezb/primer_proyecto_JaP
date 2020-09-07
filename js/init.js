@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function (e){
       userLogged = JSON.parse(userLogged);
       user.innerText = user.innerText + 'Usuario logueado: ' + userLogged.user;
       infoUser.style = "display: inline-block";
+      addComment.style = "display: inline-block";
   }
   document.getElementById("salir").addEventListener("click", function(){
       localStorage.removeItem('user-logged');
@@ -56,8 +57,3 @@ document.addEventListener("DOMContentLoaded", function (e){
   })
 })
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
-});
