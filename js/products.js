@@ -27,7 +27,7 @@ function showProducts (array){
         `   
 
         <img src="`+product.imgSrc+`" alt="imagen producto"><br>
-        Nombre: `+ product.name ` 
+        Nombre: `+ product.name +` 
         <br>
         Precio: `+ product.currency +` `+ product.cost +`
         <br>
