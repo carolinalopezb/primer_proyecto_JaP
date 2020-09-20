@@ -8,7 +8,11 @@
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://getbootstrap.com/docs/4.5/components/carousel/">
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+
+
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -23,17 +27,30 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      
+<!-- -------------------------Desplegable------------------------------ -->
 
-      <div id="info-user" style="display: none; align: right; " >
-        <p id="user" style="color: white"></p> <br>
-        <button class="btn btn-light btn-block" id="salir">Salir</button>
+      <div class="dropdown" id="info-user" style="display: none;  " >
+        <button id="user" style="color: white" class="btn btn-secondary dropdown-toggle" 
+        type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
+          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+          <a id="salir" class="dropdown-item" type="button">Salir</a>
+        </div>
     </div>
   </nav>
 
+
+  <!-- ------------------------------------------------------------------ -->
+
+<!-- ------------------------Producto------------------------------- -->
   <div>
     <h1>Inormación del producto</h1>
-    <div id="contenido"></div>
+    <div id="contenido">
+
+    </div>
     <hr>
     <div id="cont-comments"></div>
     <hr>
@@ -49,12 +66,18 @@
         <option>5</option>
       </select>
       <button id="envComm">Enviar</button>
+      <hr>
+      <div><h1>Productos relacionados:
+        <br><br>
+      </h1>
+        <div id="prodRel"></div></div>
+      
     </div>
 
     </div>
     <a href="products.html">Volver a lista de productos</a>
   </div>
-
+ <!-- ------------------------------------------------------------------ -->
 
   <footer class="text-muted">
     <div class="container">
@@ -77,6 +100,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+
 </body>
 
 </html>

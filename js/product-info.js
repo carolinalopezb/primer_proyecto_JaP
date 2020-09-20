@@ -1,13 +1,18 @@
+var product2 = {};
 
-var product = [];
+var arrayProductos = [];
+
+var product = {};
 
 var commentsArray = [];
 
+//---------------------------------------------Mostrar producto
 function showProduct(product, rray) {
 
 
          let info = "";
          let comments = "";
+
 
 
             info += '<h2>' + product.name + '</h2>';
@@ -16,10 +21,16 @@ function showProduct(product, rray) {
             info += '<p>Cantidad vendidos: ' + product.soldCount +'</p>';
             info += '<p>Categoría: ' + product.category +'</p>';
 
+
+
+         for(i=0; i<product.images.length;i++){
+         info += '<img src="'+product.images[i]+'">';
             
-            for(i=0; i<product.images.length;i++){
-                info += '<img src="'+product.images[i]+'">';
-            }
+        }
+
+
+            
+
 
       for (i = 0; i < rray.length; i++) {
 
@@ -42,6 +53,28 @@ function showProduct(product, rray) {
       
     
 }
+//---------------------------------------------Productos realcionados
+
+function mostrarProdRel(array, arrayRelacionados){
+    let info = "";
+    arrayRelacionados.forEach(function(i){
+
+        info += '<h2>' + array[i].name + '</h2>';
+        info += '<p> Descripción: ' + array[i].description + '</p><br>';
+        info += '<p>Precio: ' + array[i].currency + ' ' + array[i].cost +'</p>';
+        info += '<p>Cantidad vendidos: ' + array[i].soldCount +'</p>';
+        info += '<p>Categoría: ' + array[i].category +'</p>';
+        info+= '<img src="'+array[i].imgSrc+'">';
+        info += '<a href="product-info.html"><button style="float: right;">Ver producto</button></a><br><br>'
+
+        
+    });
+
+    document.getElementById("prodRel").innerHTML = info;
+
+}
+
+//----------------------------------------------Enviar comentario
 document.getElementById("envComm").addEventListener("click", function(){
     let d = new Date();
 
@@ -56,18 +89,27 @@ document.getElementById("envComm").addEventListener("click", function(){
     showProduct(product, commentsArray);
 });
 
+//-------------------------------------------------------------
+
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
         if (resultObj.status === 'ok'){
             commentsArray = resultObj.data;
         }
      });
+     getJSONData(PRODUCTS_URL).then(function(resultObj){
+        if (resultObj.status === "ok"){
+            arrayProductos = resultObj.data;
+        }
+    });
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             product = resultObj.data;
             showProduct(product, commentsArray);
+            mostrarProdRel(arrayProductos, product.relatedProducts)
         }
     });
+
 }); 
 
 
