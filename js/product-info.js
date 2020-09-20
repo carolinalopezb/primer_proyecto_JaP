@@ -63,7 +63,6 @@ function mostrarProdRel(array, arrayRelacionados){
         info += '<p> Descripción: ' + array[i].description + '</p><br>';
         info += '<p>Precio: ' + array[i].currency + ' ' + array[i].cost +'</p>';
         info += '<p>Cantidad vendidos: ' + array[i].soldCount +'</p>';
-        info += '<p>Categoría: ' + array[i].category +'</p>';
         info+= '<img src="'+array[i].imgSrc+'">';
         info += '<a href="product-info.html"><button style="float: right;">Ver producto</button></a><br><br>'
 
