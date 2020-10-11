@@ -59,14 +59,38 @@
     </div>
     
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+
+    <!-- ------------------------------------------------------------------ -->
+    <div class="text-center p-4">
+      <h2>Carrito</h2>
+      <p class="lead">Verás aquí los productos agregados a tu carrito de compras.</p>
   </div>
+
+    <div class="carrito">
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Moneda</th>
+            <th>Precio unitario</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="listado"> </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">Total productos:</td>
+            <td id="total"></td>
+          </tr>
+        </tfoot>
+      </table>
+      <hr>
+      <button id="boton" onclick="dolarPeso()">Dolar / Peso</button>
+
+      <!-- ------------------------------------------------------------------ -->
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

@@ -139,3 +139,14 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.carrito,table, th, td {
+  width: 100%;
+  max-width: 650px;
+  padding: 15px;
+  margin: auto;
+  background-color: rgb(102, 124, 131);
+  color: white;
+  border: 1px white solid;
+  border-radius:5px; 
+}
