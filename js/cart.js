@@ -15,7 +15,7 @@ function dolarPeso() {
         moneda = "USD"
 
     } 
-   // showCart(cartArray);    No funciona.
+showCart(cartArray); 
 }
 // Calcular total productos------------------------------------------------------------------------
      
