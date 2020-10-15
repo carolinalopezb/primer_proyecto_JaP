@@ -1,7 +1,7 @@
 
 
 var cartArray = [];
-var moneda = "USD";
+var moneda = "UYU";
 
 
 //Cambiar dolar a peso y viceversa --------------------------------------------------------------
@@ -44,22 +44,27 @@ function showCart(array) {
 
     let contenido = "";
 
+
     for (let i = 0; i < array.length; i++) {
         
         let product = array[i];
 
         let moneda2 = moneda;
+        let currency = product.currency;
+        let cost = product.unitCost;
 
-        if (moneda === "USD" && product.currency === "UYU") {
-            product.unitCost = product.unitCost / 40;
+        if (moneda === "USD" && currency === "UYU") {
+            cost = cost / 40;
+            currency ="USD";
         }
 
-        if (moneda === "UYU" && product.currency === "USD") {
-            product.unitCost = product.unitCost * 40;
+        if (moneda === "UYU" && currency === "USD") {
+            cost = cost * 40;
+            currency = "UYU";
         }
 
 
-        let sub = product.unitCost * product.count;
+        let sub = cost * product.count;
 
         contenido += `
         <tr>
@@ -67,12 +72,12 @@ function showCart(array) {
 
             <td>'${product.name}'</td>
 
-            <td><input style="width:60px;" onchange="Subtotal(${product.unitCost}, ${i})" 
+            <td><input style="width:60px;" onchange="Subtotal(${cost}, ${i})" 
                 type="number" id="cantidad${i}" value="${product.count}" min="1"></td>
 
             <td >${moneda2}</td>
 
-            <td >${ product.unitCost}</td>
+            <td >${ cost}</td>
 
             <td><span class="subtotal" id="productSubtotal${i}" style="font-weight:bold;">${sub}</span></td>
             
