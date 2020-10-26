@@ -31,6 +31,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -60,13 +61,16 @@
     
   </nav>
 
-    <!-- ------------------------------------------------------------------ -->
-    <div class="text-center p-4">
-      <h2>Carrito</h2>
-      <p class="lead">Verás aquí los productos agregados a tu carrito de compras.</p>
-  </div>
+  <div class="text-center p-4">
+    <h2>Carrito</h2>
+    <p class="lead">Verás aquí los productos agregados a tu carrito de compras.</p>
+</div>
 
-    <div class="carrito">
+  <div class="container">
+    <div class="row">
+    <!-- ------------------------------ Carrito ------------------------------------ -->
+<div class="col-lg-8">
+    <div class="carrito" class="form-group">
       <table>
         <thead>
           <tr>
@@ -81,15 +85,169 @@
         <tbody id="listado"> </tbody>
         <tfoot>
           <tr>
-            <td colspan="5">Total productos:</td>
+            <td colspan="5">Total productos</td>
             <td id="total"></td>
+          </tr>
+          <tr>
+            <td colspan="5">Total + envío</td>
+            <td id="totalEnvio"></td>
           </tr>
         </tfoot>
       </table>
       <hr>
-      <button id="boton" onclick="dolarPeso()">Dolar / Peso</button>
+      <button id="boton" onclick="dolarPeso()" class="btn btn-primary">Dolar / Peso</button>
+      <hr>
+    </div>
+  </div>
+       <!-- ------------------------------ Envío ------------------------------------ -->
+       <div class="col-lg-3">
+       <h3>Tipo de envío:</h3><hr>
+       <form class="needs-validation" novalidate>
+        <div class="form-group">
+          <h5>Dirección:</h5>
+          <label for="calle">Calle:</label>
+          <input type="text" class="form-control" id="calle" required>
+          <label for="numero">Número:</label>
+          <input type="number" class="form-control" id="numero" required>
+          <label for="esquina">Esquina:</label>
+          <input type="text" class="form-control" id="esquina" required><hr>
+        </div>
+        <div class="form-group">
+          <label for="pais">País:</label>
+          <select class="form-control" id="pais" required>
+            <option>Uruguay</option>
+            <option>Argentina</option>
+            <option>Brasil</option>
+            <option>Chile</option>
+          </select><hr>
 
-      <!-- ------------------------------------------------------------------ -->
+          <label for="formaEnvio">Seleccione un tipo de envío:</label>
+          <select multiple class="form-control" id="formaEnvio" onchange="envio()" required>
+            <option value="p">Premium</option>
+            <option value="e">Express</option>
+            <option value="s">Standard</option>
+          </select><br>
+          <div id="tipoEnvio"></div>
+        </div>        <div >
+          <p class="text-danger" id="alertaPago"></p>
+          <p class="text-success" id="alertaPagoSucc"></p>
+        </div>
+        
+        <button type="button" class="btn btn-secondary btn-block" id="btnEnvio" data-toggle="modal" data-target="#modalPagar">Ingrese modo de pago</button>
+        <br><br>
+
+  
+        <button type="submit" class="btn btn-primary btn-block" id="submitForm" onclick="alertFormaPago()">Confirmar pedido</button>
+        <br><br>
+
+      </form>
+
+
+    </div>
+        <!-- ---------------------------/Envio--------------------------------- -->
+
+</div>
+</div>
+              <!-- --------------------------Modal------------------------------- -->
+
+<div class="modal fade" id="modalPagar">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Elija modo de pago</h5>
+
+      </div>
+<label for="pagoTarjeta"> Pago con tarjeta</label>
+<input type="radio" name="formaPago" id="pagoTarjeta" value="1" checked=""><br>
+<label for="pagoCuenta"></label>Pago con cuenta</label>
+<input type="radio" name="formaPago" id="pagoCuenta" value="2">
+
+                  <!-- Formulario Tarjeta------------------------------------------------------------------ -->
+        <div id="divFormTarjeta" class="d-none">
+                  <form  id="formularioTrj"  >
+          <div class="modal-body mb-1">
+            <hr>
+              <div class="md-form form-sm mb-4">
+        
+                <label for="nombreTrj">Nombre del titular</label>
+                <input type="text" id="nombreTrj" class="form-control form-control-sm validate"
+                  placeholder="Como aparece en la tarjeta" required>
+        
+              </div>
+        
+              <div class="md-form form-sm mb-4">
+        
+                <label data-error="wrong" data-success="right" for="numeroTrj">Número de tarjeta</label>
+                <input type="number" id="numeroTrj" class="form-control form-control-sm validate" required>
+        
+              </div>
+        
+              <div class="md-form form-sm mb-4">
+        
+                <label for="fechaTrj" data-error="wrong" data-success="right">Fecha de expiración</label>
+                <input type="text" id="mesTrj" class="form-control form-control-sm validate" id="fechaTrj" placeholder="mes"
+                  required>
+                <input type="number" id="anioTrj" class="form-control form-control-sm validate" placeholder="año" required>
+        
+              </div>
+        
+              <div class="md-form form-sm mb-4">
+        
+                <label data-error="wrong" data-success="right" for="codigoTrj" required>Código de seguridad</label>
+                <input type="text" id="codigoTrj" class="form-control form-control-sm validate" required>
+        
+              </div>
+        
+              <div class="text-center mt-2">
+                <button type="button" class="btn btn-default" id="btnTrj" onclick="todos()">Close</button>
+              </div>
+            </div>
+            <hr>
+        </form>
+      </div>
+                <!-- ------------------------/formulario tarjeta------------------------------------------ -->
+
+                <!-- Formulario Cuenta------------------------------------------------------------------ -->
+                <div id="divFormCuenta" class="d-none"> 
+                <form  id="formularioCuenta" >
+
+          <div class="modal-body">
+            <h4>Pago con cuenta bancaria</h4>
+            <hr>
+            <div class="md-form form-sm mb-5">
+              <label data-error="wrong" data-success="right" for="nombreCuenta">Nombre del titular o empresa de la
+                cuenta</label>
+              <input type="text" id="nombreCuenta" class="form-control form-control-sm validate" required>
+      
+            </div>
+      
+            <div class="md-form form-sm mb-5">
+              <label data-error="wrong" data-success="right" for="numeroCuenta">Número de la cuenta</label>
+              <input type="password" id="numeroCuenta" class="form-control form-control-sm validate" required>
+      
+            </div>
+      
+      
+            <div class="text-center form-sm mt-2">
+              <button type="button" class="btn btn-default" id="btnCuenta" onclick="todos()">Close</button>
+            </div>
+              </div>
+      </form>
+    </div>
+              <!-- --------------------------/form cuenta---------------------------------------- -->
+              <div class="modal-footer" >
+                <div >
+                  <p id="alertaModal" class="text-danger"></p>
+                </div>
+
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+              <!-- ------------------------/Modal----------------------------- -->
+
 
   <div id="spinner-wrapper">
     <div class="lds-ring">
@@ -104,6 +262,7 @@
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+
 </body>
 
 </html>

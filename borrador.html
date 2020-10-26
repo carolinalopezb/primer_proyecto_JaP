@@ -1,0 +1,101 @@
+<div class="modal fade" id="modalPagar">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ingrese sus datos</h5>
+        </div>
+        <div class="modal-body">
+                    <!-- Formulario Tarjeta------------------------------------------------------------------ -->
+          <form action="cart.html" id="formularioTrj" class="needs-validation" novalidate>
+            <div class="modal-body mb-1">
+                <div class="md-form form-sm mb-4">
+          
+                  <label for="nombreTrj">Nombre del titular</label>
+                  <input type="text" id="nombreTrj" class="form-control form-control-sm validate"
+                    placeholder="Como aparece en la tarjeta" required>
+          
+                </div>
+          
+                <div class="md-form form-sm mb-4">
+          
+                  <label data-error="wrong" data-success="right" for="numeroTrj">Número de tarjeta</label>
+                  <input type="number" id="numeroTrj" class="form-control form-control-sm validate" required>
+          
+                </div>
+          
+                <div class="md-form form-sm mb-4">
+          
+                  <label for="fechaTrj" data-error="wrong" data-success="right">Fecha de expiración</label>
+                  <input type="text" id="mesTrj" class="form-control form-control-sm validate" id="fechaTrj" placeholder="mes"
+                    required>
+                  <input type="number" id="anioTrj" class="form-control form-control-sm validate" placeholder="año" required>
+          
+                </div>
+          
+                <div class="md-form form-sm mb-4">
+          
+                  <label data-error="wrong" data-success="right" for="codigoTrj" required>Código de seguridad</label>
+                  <input type="text" id="codigoTrj" class="form-control form-control-sm validate" required>
+          
+                </div>
+          
+                <div class="text-center mt-2">
+                  <button type="submit" class="btn btn-info">confirmar pedido</button>
+                </div>
+              </div>
+          </form>
+                  <!-- ------------------------------------------------------------------ -->
+
+                  <!-- Formulario Cuenta------------------------------------------------------------------ -->
+          <form action="cart.html" id="formularioCuenta" class="needs-validation" novalidate>
+
+        </form>
+                <!-- ------------------------------------------------------------------ -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-primary btn-block" id="btnEnvio" data-toggle="modal" data-target="#modalLRForm">Confirmar</button>
+
+
+
+
+
+  data-dismiss="modal"
+
+
+  for (var i = 0; i < formaPago.length; i++) {
+    if (formaPago[i].checked && (formaPago[i].value) == "1") {
+        if (nombreTrj == "" || numeroTrj == "" || mesTrj == "" || anioTrj == "" || codigoTrj == "") {
+            pagoValido = true;
+        }else{
+            pagoValido = false;
+        }
+    } else if(formaPago[i].checked && (formaPago[i].value) == "2"){
+        
+        if (nombreCuenta == "" || numeroCuenta == "") {
+            pagoValido = false;
+        }else{
+            pagoValido = true;
+        }
+
+}
+
+
+   
+if (document.getElementById("pagoTarjeta").checked) {
+  if (nombreTrj == "" || numeroTrj == "" || mesTrj == "" || anioTrj == "" || codigoTrj == "") {
+      pagoValido = true;
+  } else {
+      pagoValido = false;
+  }
+} else if (document.getElementById("pagoCuenta").checked) {
+
+  if (nombreCuenta == "" || numeroCuenta == "") {
+      pagoValido = false;
+  } else {
+      pagoValido = true;
+  }
+
+}
