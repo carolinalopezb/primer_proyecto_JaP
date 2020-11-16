@@ -56,16 +56,43 @@
 
 
 <!-- ------------------------------------------------------------------ -->
+
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  
+    <div id="formularioPerfil">
+  
+      <label for="perfilImagenURL">Imagen de perfil:</label><br>
+      <img alt="imagen" id="imagenPerfil" src="https://i.imgur.com/P5uyh41.png" style="max-width: 200px;"><br>
+      <input type="text" id="perfilImagenURL" placeholder="Ingrese URL de la imagen" ><br>
+  
+      <label for="perfilNombres" >Nombres:</label><br>
+      <input type="text" id="perfilNombres" ><br>
+  
+      <label for="perfilApellidos" >Apellidos:</label><br>
+      <input type="text" id="perfilApellidos"><br>
+  
+      <label for="perfilEdad">Edad:</label><br>
+      <input type="number" id="perfilEdad" ><br>
+  
+  
+      <label for="perfilEmail" >Email:</label> <br>
+      <input type="email" id="perfilEmail" > <br>
+  
+      <label for="perfilTelefono">Telefono:</label><br>
+      <input type="number" id="perfilTelefono" ><br><br>
+      <div id="validarCampos" style="color: crimson;"></div>
+      <div id="camposValidados" style="color: green;"></div>
+  
+      <button id="guardarCambios" type="button" class="btn btn-primary" >Guardar cambios</button>
+  
     </div>
-  </div>
+
+<!-- ------------------------------------------------------------------ -->
+
+          
+<!-- ------------------------------------------------------------------ -->
+  
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
@@ -78,6 +105,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -86,6 +114,8 @@
       <div></div>
     </div>
   </div>
+
+
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>

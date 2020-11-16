@@ -21,18 +21,22 @@ function showProducts (array){
         if(((minPrecio == undefined) || (minPrecio != undefined && parseInt(product.cost) >= minPrecio)) && 
         ((maxPrecio == undefined) || (maxPrecio != undefined && parseInt(product.cost) <= maxPrecio))){
 
-
+       
         htmlContentToAppend +=
 
         `   
-
-        <img src="`+product.imgSrc+`" alt="imagen producto"><br>
+       
+        <div class="col-md-6 col-lg-4">
+        <img src="`+product.imgSrc+`" alt="imagen producto"  class="img-thumbnail"><br>
+ 
         Nombre: `+ product.name +` 
         <br>
         Precio: `+ product.currency +` `+ product.cost +`
         <br>
-        Descripción: `+ product.description +`
-        <a style="float: right"href="file:///C:/Users/Admin.DESKTOP-0Q23CA9/Documents/GitHub/primer_proyecto_JaP/product-info.html">Ver producto</a><br><br>
+        Descripción: `+ product.description +`<br>
+        <a href="file:///C:/Users/Admin.DESKTOP-0Q23CA9/Documents/GitHub/primer_proyecto_JaP/product-info.html">Ver producto</a><br><br>
+        </div>
+        <br>
         `
         document.getElementById("prod").innerHTML = htmlContentToAppend;
     }
