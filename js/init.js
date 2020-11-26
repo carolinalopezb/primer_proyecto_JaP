@@ -52,9 +52,10 @@ document.addEventListener("DOMContentLoaded", function (e){
       infoUser.style = "display: inline-block";
       addComment.style = "display: inline-block";
   }
-  document.getElementById("salir").addEventListener("click", function(){
-      localStorage.removeItem('user-logged');
-      window.location = 'index.html';
-  })
+
 })
 
+function salir(){
+    localStorage.removeItem('user-logged');
+    window.location = 'index.html';
+}
