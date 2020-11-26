@@ -145,7 +145,7 @@ for (let i=0; i<pagos.length; i++){
 function validarPago(){
 
 
-    let  pagoValido = true;
+    let  pagoValido = false;
     let nombreTrj = document.getElementById("nombreTrj").value;
     let numeroTrj = document.getElementById("numeroTrj").value;
     let mesTrj = document.getElementById("mesTrj").value;
@@ -226,12 +226,12 @@ function todos(){
 (function() {
     'use strict';
     window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    
     var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
+  
     var validation = Array.prototype.filter.call(forms, function(form) {
     form.addEventListener('submit', function(event) {
-    if (form.checkValidity() === false) {
+    if (form.checkValidity() === false || validarPago() === false) {
     event.preventDefault();
     event.stopPropagation();
     }
